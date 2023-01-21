@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
@@ -21,7 +22,7 @@ export default function BikesPreview({ bikes }) {
           {bikesForPreview.map((bike) => {
             return (
               <Image
-                key={bike.id}
+                key={uuidv4()}
                 src={bike.imageSource}
                 height={50}
                 width={60}
@@ -30,7 +31,7 @@ export default function BikesPreview({ bikes }) {
             );
           })}
         </div>
-        <Link href="">Show all...</Link>
+        <Link href="/Bikes">Show all...</Link>
       </StyledBikePreview>
     </>
   );
