@@ -21,6 +21,7 @@ export default function BikesPreview({ bikes }) {
           {bikesForPreview.map((bike) => {
             return (
               <Image
+                key={bike.id}
                 src={bike.imageSource}
                 height={50}
                 width={60}
