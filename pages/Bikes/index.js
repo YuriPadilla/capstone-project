@@ -4,7 +4,9 @@ import Link from "next/link";
 export default function Bikes() {
   return (
     <>
-      <Link href="/">Home</Link>→<Link href="">Bikes</Link>
+      <p>
+        <Link href="/">Home</Link>→<Link href="">Bikes</Link>
+      </p>
       <BikesList />
     </>
   );
