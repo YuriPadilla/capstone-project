@@ -5,10 +5,12 @@ import { bikes } from "../lib/bikes.js";
 import { bikeParts } from "../lib/bikeParts";
 import Link from "next/link";
 import ContactInfo from "../components/ContactInfo";
+import Header from "../components/Header";
 
 export default function HomePage() {
   return (
     <>
+      <Header />
       <p>
         <Link href="">Home</Link>
       </p>
