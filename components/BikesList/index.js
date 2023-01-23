@@ -15,6 +15,7 @@ export default function BikesList() {
               height={100}
               width={120}
               alt={bike.marke}
+              priority
             />
           );
         })}

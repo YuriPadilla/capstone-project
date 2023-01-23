@@ -15,6 +15,7 @@ export default function BikePartsList() {
               height={100}
               width={120}
               alt={bikePart.name}
+              priority
             />
           );
         })}

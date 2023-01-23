@@ -27,6 +27,7 @@ export default function BikesPreview({ bikes }) {
                 height={50}
                 width={60}
                 alt={bike.marke}
+                priority
               />
             );
           })}

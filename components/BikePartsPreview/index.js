@@ -28,6 +28,7 @@ export default function BikePartsPreview({ bikeParts }) {
                 height={50}
                 width={60}
                 alt={bikePart.name}
+                priority
               />
             );
           })}
