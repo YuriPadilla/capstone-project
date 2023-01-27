@@ -1,6 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 import { bikes } from "../../lib/bikes.js";
 import Image from "next/image";
+import Link from "next/link.js";
 
 export default function BikesList() {
   return (
@@ -9,14 +10,15 @@ export default function BikesList() {
       <div>
         {bikes.map((bike) => {
           return (
-            <Image
-              key={uuidv4()}
-              src={bike.imageSource}
-              height={100}
-              width={120}
-              alt={bike.marke}
-              priority
-            />
+            <Link key={uuidv4()} href={`/Bikes/${bike.id}`}>
+              <Image
+                src={bike.imageSource}
+                height={100}
+                width={120}
+                alt={bike.marke}
+                priority
+              />
+            </Link>
           );
         })}
       </div>
