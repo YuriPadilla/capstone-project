@@ -1,4 +1,5 @@
 import Header from "../../components/Header";
+import ShoppingCart from "../../components/ShoppingCart";
 import ContactUsForm from "../../components/ContactUsForm";
 import Link from "next/link";
 import { useState } from "react";
@@ -27,6 +28,7 @@ export default function ContactUsPage() {
       <p>
         <Link href="/">Home</Link>→<Link href="">Contact us</Link>
       </p>
+      <ShoppingCart />
       <ContactUsForm handleSubmit={handleSubmit} />
       <ToastNotification toastAction={toastAction} />
     </>

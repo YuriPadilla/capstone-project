@@ -1,3 +1,4 @@
+import ShoppingCart from "../components/ShoppingCart";
 import PriceInfo from "../components/PriceInfo";
 import BikesPreview from "../components/BikesPreview";
 import BikePartsPreview from "../components/BikePartsPreview";
@@ -14,6 +15,7 @@ export default function HomePage() {
       <p>
         <Link href="">Home</Link>
       </p>
+      <ShoppingCart />
       <PriceInfo />
       <BikesPreview bikes={bikes} />
       <BikePartsPreview bikeParts={bikeParts} />
