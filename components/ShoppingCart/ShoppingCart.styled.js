@@ -1,6 +1,7 @@
+import Link from "next/link";
 import styled, { css } from "styled-components";
 
-export const StyledShoppingCart = styled.button`
+export const StyledShoppingCart = styled(Link)`
   position: fixed;
   z-index: 1;
   top: 85px;
@@ -10,6 +11,9 @@ export const StyledShoppingCart = styled.button`
   border: none;
   border-radius: 50%;
   background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${({ disabled }) => {
     if (!disabled) {
       return css`

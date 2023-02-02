@@ -28,6 +28,7 @@ export default function ShoppingCart() {
 
   return (
     <StyledShoppingCart
+      href="/ShoppingCartPage"
       disabled={
         getProductsShoppingCart()?.length === 0 ||
         getProductsShoppingCart() === null
