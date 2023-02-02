@@ -11,7 +11,8 @@ export const StyledSelectionUl = styled.ul`
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 360px;
+  min-height: 200px;
+  max-height: 300px;
   border: 1px solid rgb(95, 117, 129);
   box-shadow: 0px 0px 20px rgb(95, 117, 129);
   overflow: auto;

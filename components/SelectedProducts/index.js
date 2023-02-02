@@ -1,4 +1,3 @@
-import { bikes } from "../../lib/bikes";
 import {
   StyledSelectionUl,
   StyledProductLi,
@@ -9,28 +8,28 @@ import {
 } from "./SelectedProducts.styled";
 import SVGIcon from "../SVGIcon";
 
-export default function SelectedProducts() {
+export default function SelectedProducts({ products }) {
   return (
     <>
       <h2>Your selection</h2>
       <StyledSelectionUl>
-        {bikes.map((bike) => {
+        {products.map((product) => {
           return (
-            <StyledProductLi key={bike.id}>
+            <StyledProductLi key={product.id}>
               <StyledProductDiv>
                 <StyledImage
-                  src={bike.imageSource}
+                  src={product.imageSource}
                   height={70}
                   width={120}
-                  alt={bike.marke}
+                  alt={product.marke}
                   priority
                 />
                 <StyledDescriptionUl>
                   <li>
-                    <strong>Brand:</strong> {bike.marke}
+                    <strong>Brand:</strong> {product.marke}
                   </li>
                   <li>
-                    <strong>Size:</strong> {bike.size}
+                    <strong>Size:</strong> {product.size}
                   </li>
                 </StyledDescriptionUl>
                 <StyledRemoveButton>

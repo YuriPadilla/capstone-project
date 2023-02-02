@@ -1,45 +1,22 @@
 import { StyledShoppingCart } from "./ShoppingCart.styled";
 import SVGIcon from "../SVGIcon";
-import { useState, useEffect } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function ShoppingCart() {
-  //To avoid errors of hydration when refreshing.
-  const [showing, setShowing] = useState(false);
-
-  useEffect(() => {
-    setShowing(true);
-  }, []);
-
-  if (!showing) {
-    return null;
-  }
-  //*******************************
-
-  function getProductsShoppingCart() {
-    if (typeof window !== "undefined") {
-      return JSON.parse(localStorage.getItem("selectedProducts"));
-    }
-  }
-
-  console.log(
-    "Products in Shopping Cart???",
-    getProductsShoppingCart()?.length
-  );
+  const [selectedProducts] = useLocalStorageState("selectedProducts", {
+    defaultValue: [],
+  });
 
   return (
     <StyledShoppingCart
       href="/ShoppingCartPage"
-      disabled={
-        getProductsShoppingCart()?.length === 0 ||
-        getProductsShoppingCart() === null
-      }
+      disabled={selectedProducts?.length === 0 || selectedProducts === null}
     >
       <SVGIcon
         variant="shoppingCart"
         width="50px"
         color={`${
-          getProductsShoppingCart()?.length === 0 ||
-          getProductsShoppingCart() === null
+          selectedProducts?.length === 0 || selectedProducts === null
             ? "transparent"
             : "black"
         }`}

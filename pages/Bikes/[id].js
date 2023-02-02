@@ -21,7 +21,7 @@ export default function Bike() {
     return null;
   }
 
-  function onAddToShoppingCart() {
+  function handleAddToShoppingCart() {
     setSelectedProducts([...selectedProducts, currentBike]);
     router.push("/Bikes");
   }
@@ -34,7 +34,7 @@ export default function Bike() {
       </p>
       <ShoppingCart />
       <ProductDetails product={currentBike} />
-      <StyledButton type="button" onClick={onAddToShoppingCart}>
+      <StyledButton type="button" onClick={handleAddToShoppingCart}>
         Add to Shopping Cart
       </StyledButton>
     </>
