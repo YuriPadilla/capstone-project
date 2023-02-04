@@ -50,10 +50,14 @@ export default function LeaseTimeForm({
           <p>
             Select{" "}
             {(initialDate === undefined && "days") ||
+              (isNaN(initialDate) && "days") ||
               (finalDate === undefined && "days") ||
+              (isNaN(finalDate) && "days") ||
               (finalDate < initialDate && "days correctly")}{" "}
             {(initialDate === undefined && howManyBikes === 0 && "and") ||
+              (isNaN(initialDate) && howManyBikes === 0 && "and") ||
               (finalDate === undefined && howManyBikes === 0 && "and") ||
+              (isNaN(finalDate) && howManyBikes === 0 && "and") ||
               (finalDate < initialDate && howManyBikes === 0 && "and")}{" "}
             {howManyBikes === 0 && "bikes"}
           </p>
