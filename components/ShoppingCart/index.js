@@ -1,4 +1,4 @@
-import { StyledShoppingCart } from "./ShoppingCart.styled";
+import { StyledShoppingCart, StyledQuantityDiv } from "./ShoppingCart.styled";
 import SVGIcon from "../SVGIcon";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -8,19 +8,13 @@ export default function ShoppingCart() {
   });
 
   return (
-    <StyledShoppingCart
-      href="/ShoppingCartPage"
-      disabled={selectedProducts?.length === 0 || selectedProducts === null}
-    >
-      <SVGIcon
-        variant="shoppingCart"
-        width="50px"
-        color={`${
-          selectedProducts?.length === 0 || selectedProducts === null
-            ? "transparent"
-            : "black"
-        }`}
-      />
-    </StyledShoppingCart>
+    <>
+      {selectedProducts?.length > 0 || !selectedProducts === null ? (
+        <StyledShoppingCart href="/ShoppingCartPage">
+          <SVGIcon variant="shoppingCart" width="50px" color="black" />
+          <StyledQuantityDiv>{selectedProducts?.length}</StyledQuantityDiv>
+        </StyledShoppingCart>
+      ) : null}
+    </>
   );
 }

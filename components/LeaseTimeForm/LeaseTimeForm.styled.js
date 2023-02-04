@@ -45,3 +45,9 @@ export const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const StyledDescriptionUl = styled.ul`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+`;

@@ -5,11 +5,18 @@ import {
   StyledInputContainer,
   StyledOutput,
   StyledButtonContainer,
+  StyledDescriptionUl,
 } from "./LeaseTimeForm.styled.js";
 
-export default function LeaseTimeForm() {
+export default function LeaseTimeForm({
+  onLeaseDays,
+  initialDate,
+  finalDate,
+  getLeaseDays,
+  howManyBikes,
+}) {
   return (
-    <StyledForm>
+    <StyledForm onChange={onLeaseDays}>
       <StyledFieldset>
         <StyledInputContainer>
           <label htmlFor="from">*From:</label>
@@ -21,7 +28,36 @@ export default function LeaseTimeForm() {
         </StyledInputContainer>
       </StyledFieldset>
       <output>
-        {2}days: ${25}
+        {initialDate !== undefined &&
+        finalDate !== undefined &&
+        finalDate >= initialDate &&
+        howManyBikes >= 1 ? (
+          <StyledDescriptionUl>
+            <li>
+              <strong>Selected bikes:</strong> {howManyBikes} bike
+              {howManyBikes > 1 && "s"}
+            </li>
+            <li>
+              <strong>Lease time:</strong> {getLeaseDays()} day
+              {getLeaseDays() > 1 && "s"}
+            </li>
+            <li>
+              <strong>Final price:</strong> $
+              {(getLeaseDays() * 10 + 5) * howManyBikes}
+            </li>
+          </StyledDescriptionUl>
+        ) : (
+          <p>
+            Select{" "}
+            {(initialDate === undefined && "days") ||
+              (finalDate === undefined && "days") ||
+              (finalDate < initialDate && "days correctly")}{" "}
+            {(initialDate === undefined && howManyBikes === 0 && "and") ||
+              (finalDate === undefined && howManyBikes === 0 && "and") ||
+              (finalDate < initialDate && howManyBikes === 0 && "and")}{" "}
+            {howManyBikes === 0 && "bikes"}
+          </p>
+        )}
       </output>
     </StyledForm>
   );

@@ -12,10 +12,10 @@ export default function HomePage() {
   return (
     <>
       <Header />
+      <ShoppingCart />
       <p>
         <Link href="">Home</Link>
       </p>
-      <ShoppingCart />
       <PriceInfo />
       <BikesPreview bikes={bikes} />
       <BikePartsPreview bikeParts={bikeParts} />

@@ -10,12 +10,10 @@ export default function BikesList() {
 
   const bikesToShow = bikes.filter((bike) => {
     let isSelected;
-    if (typeof window !== "undefined") {
-      if (selectedProducts === null) {
-        isSelected = false;
-      } else {
-        isSelected = selectedProducts.some((product) => product.id === bike.id);
-      }
+    if (selectedProducts === null) {
+      isSelected = false;
+    } else {
+      isSelected = selectedProducts.some((product) => product.id === bike.id);
     }
     return !isSelected;
   });
