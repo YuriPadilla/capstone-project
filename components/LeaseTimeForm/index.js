@@ -6,17 +6,19 @@ import {
   StyledOutput,
   StyledButtonContainer,
   StyledDescriptionUl,
+  StyledButton,
 } from "./LeaseTimeForm.styled.js";
 
 export default function LeaseTimeForm({
-  onLeaseDays,
+  handleChange,
+  onSubmit,
   initialDate,
   finalDate,
   getLeaseDays,
   howManyBikes,
 }) {
   return (
-    <StyledForm onChange={onLeaseDays}>
+    <StyledForm onChange={handleChange} onSubmit={onSubmit}>
       <StyledFieldset>
         <StyledInputContainer>
           <label htmlFor="from">*From:</label>
@@ -63,6 +65,21 @@ export default function LeaseTimeForm({
           </p>
         )}
       </output>
+      <StyledButtonContainer>
+        <StyledButton
+          type="submit"
+          disabled={
+            initialDate !== undefined &&
+            finalDate !== undefined &&
+            finalDate >= initialDate &&
+            howManyBikes >= 1
+              ? false
+              : true
+          }
+        >
+          Book
+        </StyledButton>
+      </StyledButtonContainer>
     </StyledForm>
   );
 }

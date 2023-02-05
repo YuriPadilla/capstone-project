@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function ToastNotification({ toastAction }) {
+export default function ToastNotification({ toastAction, toastMessage }) {
   return (
     <button className={`toast ${toastAction}`}>
       <Image
@@ -9,7 +9,7 @@ export default function ToastNotification({ toastAction }) {
         width={20}
         alt="IconDone"
       ></Image>
-      Your message was sent
+      {toastMessage}
     </button>
   );
 }

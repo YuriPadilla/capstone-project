@@ -7,9 +7,6 @@ import ToastNotification from "../../components/ToastNotification";
 
 export default function ContactUsPage() {
   const [toastAction, setToastAction] = useState("");
-  function exitToast() {
-    setToastAction("exit");
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +16,7 @@ export default function ContactUsPage() {
     console.log(data);
 
     setToastAction("enter");
-    setTimeout(exitToast, 3000);
+    setTimeout(() => setToastAction("exit"), 3000);
   }
 
   return (
@@ -30,7 +27,10 @@ export default function ContactUsPage() {
       </p>
       <ShoppingCart />
       <ContactUsForm handleSubmit={handleSubmit} />
-      <ToastNotification toastAction={toastAction} />
+      <ToastNotification
+        toastAction={toastAction}
+        toastMessage="Your message was sent"
+      />
     </>
   );
 }

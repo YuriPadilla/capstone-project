@@ -9,6 +9,7 @@ import {
 import LeaseTimeForm from "../../components/LeaseTimeForm";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
+import ToastNotification from "../../components/ToastNotification";
 
 export default function ShoppingCartPage() {
   const [selectedProducts, setSelectedProducts, { removeItem }] =
@@ -16,6 +17,8 @@ export default function ShoppingCartPage() {
 
   const [initialDate, setInicialDate] = useState();
   const [finalDate, setFinalDate] = useState();
+
+  const [toastAction, setToastAction] = useState("");
 
   function handleEmptyShoppingCart() {
     removeItem();
@@ -27,12 +30,23 @@ export default function ShoppingCartPage() {
     });
   }
 
-  function handleLeaseDays(event) {
+  function handleChange(event) {
     if (event.target.name === "from") {
       setInicialDate(new Date(event.target.value).getTime());
     } else if (event.target.name === "until") {
       setFinalDate(new Date(event.target.value).getTime());
     }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    console.log(data);
+
+    setToastAction("enter");
+    setTimeout(() => setToastAction("exit"), 3000);
   }
 
   function getLeaseDays() {
@@ -64,11 +78,16 @@ export default function ShoppingCartPage() {
         </StyledButton>
       </StyledButtonContainer>
       <LeaseTimeForm
-        onLeaseDays={handleLeaseDays}
+        handleChange={handleChange}
+        onSubmit={handleSubmit}
         initialDate={initialDate}
         finalDate={finalDate}
         getLeaseDays={getLeaseDays}
         howManyBikes={selectedProducts.length}
+      />
+      <ToastNotification
+        toastAction={toastAction}
+        toastMessage="Booking successful"
       />
     </>
   );
