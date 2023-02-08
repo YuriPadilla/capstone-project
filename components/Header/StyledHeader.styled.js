@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
+  position: fixed;
+  top: 0;
+  z-index: 10;
+
   margin: 0;
   padding: 1em;
 
@@ -15,7 +19,6 @@ export const StyledHeader = styled.header`
 
   display: flex;
   align-items: center;
-  position: relative;
 `;
 
 export const StyledIconFacebook = styled.div`
