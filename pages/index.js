@@ -7,6 +7,7 @@ import { bikeParts } from "../lib/bikeParts";
 import Link from "next/link";
 import ContactInfo from "../components/ContactInfo";
 import Header from "../components/Header";
+import NavBar from "../components/NavBar";
 
 export default function HomePage() {
   return (
@@ -20,6 +21,7 @@ export default function HomePage() {
       <BikesPreview bikes={bikes} />
       <BikePartsPreview bikeParts={bikeParts} />
       <ContactInfo />
+      <NavBar />
     </>
   );
 }

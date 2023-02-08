@@ -4,6 +4,7 @@ import ContactUsForm from "../../components/ContactUsForm";
 import Link from "next/link";
 import { useState } from "react";
 import ToastNotification from "../../components/ToastNotification";
+import NavBar from "../../components/NavBar";
 
 export default function ContactUsPage() {
   const [toastAction, setToastAction] = useState("");
@@ -31,6 +32,7 @@ export default function ContactUsPage() {
         toastAction={toastAction}
         toastMessage="Your message was sent"
       />
+      <NavBar />
     </>
   );
 }

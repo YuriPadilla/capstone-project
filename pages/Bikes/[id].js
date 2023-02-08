@@ -6,6 +6,7 @@ import Link from "next/link";
 import { StyledButton } from "../../components/Button/Button.styled";
 import useLocalStorageState from "use-local-storage-state";
 import ShoppingCart from "../../components/ShoppingCart";
+import NavBar from "../../components/NavBar";
 
 export default function Bike() {
   const [selectedProducts, setSelectedProducts] = useLocalStorageState(
@@ -37,6 +38,7 @@ export default function Bike() {
       <StyledButton type="button" onClick={handleAddToShoppingCart}>
         Add to Shopping Cart
       </StyledButton>
+      <NavBar />
     </>
   );
 }
