@@ -10,18 +10,40 @@ export default function NavBar() {
     <>
       <StyledNavBar>
         <Link href={router.pathname === "/" ? "" : "/"}>
-          <SVGIcon variant="home" width="40px" color="#acacac" />
+          <SVGIcon
+            variant={router.pathname === "/" ? "homeFilled" : "home"}
+            width="40px"
+            color={router.pathname === "/" ? "#213327" : "#acacac"}
+          />
         </Link>
-        <Link href={router.pathname === "/" ? "" : "/"}>
-          <SVGIcon variant="info" width="40px" color="#acacac" />
+        <Link href={router.pathname === "/InfoPage" ? "" : "/InfoPage"}>
+          <SVGIcon
+            variant={router.pathname === "/InfoPage" ? "infoFilled" : "info"}
+            width="40px"
+            color={router.pathname === "/InfoPage" ? "#213327" : "#acacac"}
+          />
         </Link>
         <Link href={router.pathname === "/Bikes" ? "" : "/Bikes"}>
-          <SVGIcon variant="bicylce" width="40px" color="#acacac" />
+          <SVGIcon
+            variant="bicylce"
+            width="40px"
+            color={
+              router.pathname === "/Bikes" || router.pathname === "/Bikes/[id]"
+                ? "#213327"
+                : "#acacac"
+            }
+          />
         </Link>
         <Link
           href={router.pathname === "/ContactUsPage" ? "" : "/ContactUsPage"}
         >
-          <SVGIcon variant="send" width="40px" color="#acacac" />
+          <SVGIcon
+            variant={
+              router.pathname === "/ContactUsPage" ? "sendFilled" : "send"
+            }
+            width="40px"
+            color={router.pathname === "/ContactUsPage" ? "#213327" : "#acacac"}
+          />
         </Link>
       </StyledNavBar>
     </>
