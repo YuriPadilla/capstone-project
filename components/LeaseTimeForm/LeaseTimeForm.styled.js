@@ -61,7 +61,7 @@ export const StyledButton = styled.button`
   font-family: inherit;
   margin: 0 8px;
   padding: 4px 12px;
-  transition: border 0.8s, box-shadow 0.8s, background 0.8s, color 0.8s;
+  transition: border 1s, box-shadow 1s, background 1s, color 1s;
   ${({ disabled }) => {
     if (disabled === false) {
       return css`

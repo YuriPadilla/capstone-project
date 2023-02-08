@@ -10,14 +10,15 @@ import LeaseTimeForm from "../../components/LeaseTimeForm";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
 import ToastNotification from "../../components/ToastNotification";
+import { useAtom } from "jotai";
+import { inputDateAtom } from "@/store/atoms";
+import NavBar from "../../components/NavBar";
 
 export default function ShoppingCartPage() {
   const [selectedProducts, setSelectedProducts, { removeItem }] =
     useLocalStorageState("selectedProducts", { defaultValue: [] });
 
-  const [initialDate, setInicialDate] = useState();
-  const [finalDate, setFinalDate] = useState();
-
+  const [inputDateValues, setInputDateValues] = useAtom(inputDateAtom);
   const [toastAction, setToastAction] = useState("");
 
   function handleEmptyShoppingCart() {
@@ -32,9 +33,9 @@ export default function ShoppingCartPage() {
 
   function handleChange(event) {
     if (event.target.name === "from") {
-      setInicialDate(new Date(event.target.value).getTime());
+      setInputDateValues({ ...inputDateValues, from: event.target.value });
     } else if (event.target.name === "until") {
-      setFinalDate(new Date(event.target.value).getTime());
+      setInputDateValues({ ...inputDateValues, until: event.target.value });
     }
   }
 
@@ -42,30 +43,24 @@ export default function ShoppingCartPage() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
     console.log(data);
+
+    setInputDateValues({ from: "", until: "" });
+    event.target.elements.from.value = "";
+    event.target.elements.until.value = "";
+    event.target.elements.from.focus();
+    removeItem();
 
     setToastAction("enter");
     setTimeout(() => setToastAction("exit"), 3000);
-  }
-
-  function getLeaseDays() {
-    if (
-      initialDate !== undefined &&
-      finalDate !== undefined &&
-      finalDate >= initialDate
-    ) {
-      const leaseTime = finalDate - initialDate;
-      const leaseDays = Math.round(leaseTime / (24 * 60 * 60 * 1000)) + 1;
-      return leaseDays;
-    }
   }
 
   return (
     <>
       <Header />
       <p>
-        <Link href="/">Home</Link>→Shopping Cart
+        <Link href="/">Home</Link>→<Link href="/Bikes">Bikes</Link>→Shopping
+        Cart
       </p>
       <ShoppingCart />
       <SelectedProducts
@@ -80,15 +75,15 @@ export default function ShoppingCartPage() {
       <LeaseTimeForm
         handleChange={handleChange}
         onSubmit={handleSubmit}
-        initialDate={initialDate}
-        finalDate={finalDate}
-        getLeaseDays={getLeaseDays}
         howManyBikes={selectedProducts.length}
+        fromDate={inputDateValues.from}
+        untilDate={inputDateValues.until}
       />
       <ToastNotification
         toastAction={toastAction}
         toastMessage="Booking successful"
       />
+      <NavBar />
     </>
   );
 }

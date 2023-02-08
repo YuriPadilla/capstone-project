@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import Link from "next/link";
 import ShoppingCart from "../../components/ShoppingCart";
 import BikesList from "../../components/BikesList";
+import NavBar from "../../components/NavBar";
 
 export default function Bikes() {
   return (
@@ -12,6 +13,7 @@ export default function Bikes() {
       </p>
       <ShoppingCart />
       <BikesList />
+      <NavBar />
     </>
   );
 }
